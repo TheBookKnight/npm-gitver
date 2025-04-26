@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-const { applyGitVersion } = require('../index');
+const { generateGitVersion } = require('../index');
 
-applyGitVersion();
+const version = generateGitVersion();
+console.log(version);
