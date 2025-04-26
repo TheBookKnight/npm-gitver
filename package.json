@@ -1,22 +1,25 @@
 {
-  "name": "nodejs",
+  "name": "npm-gitver",
   "version": "1.0.0",
-  "description": "Node template",
+  "description": "npm gitver is a simple command line tool that allows you to easily manage your git versioning.",
+  "bin": {
+    "npm-gitver": "./bin/npm-gitver.js"
+  },
   "keywords": [
     "nodejs",
-    "javascript"
+    "javascript",
+    "git"
   ],
-  "homepage": "https://github.com/TheBookKnight/nodejs#readme",
+  "homepage": "https://github.com/TheBookKnight/npm-gitver#readme",
   "bugs": {
-    "url": "https://github.com/TheBookKnight/nodejs/issues"
+    "url": "https://github.com/TheBookKnight/npm-gitver/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheBookKnight/nodejs.git"
+    "url": "git+https://github.com/TheBookKnight/npm-gitver.git"
   },
   "license": "ISC",
   "author": "Joshua Cadavez",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
