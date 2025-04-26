@@ -1,3 +1,3 @@
-# PR
+# Pull Request
 
-Insert notes here
+Add PR details here
