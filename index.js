@@ -1,9 +1,9 @@
 const fs = require('fs');
-const { execSync } = require('child_process');
+const childProcess = require('child_process');
 const path = require('path');
 
 function getShortGitSHA() {
-    return execSync('git rev-parse --short HEAD').toString().trim();
+    return childProcess.execSync('git rev-parse --short HEAD').toString().trim();
 }
 
 function readPackageJson() {
@@ -19,6 +19,9 @@ function generateGitVersion() {
     const sha = getShortGitSHA();
     const pkg = readPackageJson();
 
+    if (!pkg.version) {
+        throw new Error('The "version" key is missing in package.json.');
+    }
     const baseVersion = pkg.version.split('-')[0]; // remove any pre-release suffix
     const newVersion = `${baseVersion}-${sha}`;
 
