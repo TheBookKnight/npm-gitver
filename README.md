@@ -12,6 +12,8 @@ npm install npm-gitver --save-dev
 
 ## Usage
 
+### Running via npm script
+
 1. Ensure you are using the correct Node.js version specified in the `.nvmrc` file:
 
    ```bash
@@ -33,6 +35,16 @@ npm install npm-gitver --save-dev
    ```
 
    This will automatically update your project version based on Git tags.
+
+### Running directly via CLI
+
+You can also run `npm-gitver` directly using `npx` without adding it to your `package.json`:
+
+```bash
+npx npm-gitver
+```
+
+This will execute the package directly from the command line, creating or updating the version based on Git tags.
 
 ## Linting
 
