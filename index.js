@@ -8,6 +8,9 @@ function getShortGitSHA() {
 
 function readPackageJson() {
     const pkgPath = path.resolve(process.cwd(), 'package.json');
+    if (!fs.existsSync(pkgPath)) {
+        throw new Error('package.json not found in the current working directory.');
+    }
     const raw = fs.readFileSync(pkgPath);
     return JSON.parse(raw);
 }
