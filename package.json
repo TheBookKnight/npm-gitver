@@ -1,6 +1,6 @@
 {
   "name": "npm-gitver",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "npm gitver is a simple command line tool that allows you to easily manage your git versioning.",
   "bin": {
     "npm-gitver": "./bin/npm-gitver.js"
