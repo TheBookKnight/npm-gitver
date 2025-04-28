@@ -62,6 +62,28 @@ npx npm-gitver -f ./path/to/package.json
 
 This will use the specified `package.json` file to determine the base version and update it accordingly.
 
+### Including the Git Branch in the Version
+
+You can use the `--branch` flag to include the current Git branch name in the generated version. This is useful for identifying builds from different branches.
+
+```bash
+npx npm-gitver --branch
+```
+
+or
+
+```bash
+npx npm-gitver -b
+```
+
+When using this flag, the generated version will include the branch name as a prefix to the Git SHA, formatted as `<branch>.<sha>`. For example, if the branch is `feature/new-feature` and the Git SHA is `abc123`, the version will look like:
+
+```
+1.0.0-feature-new-feature.abc123
+```
+
+Note: Slashes (`/`) in branch names will be replaced with dashes (`-`), and any unsafe characters will be removed.
+
 ## Linting
 
 Follow best practices for linting your code. Refer to the ESLint documentation for setup and configuration:

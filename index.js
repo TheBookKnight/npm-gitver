@@ -15,17 +15,32 @@ function readPackageJson(filePath = './package.json') {
     return JSON.parse(raw);
 }
 
-function generateGitVersion(filePath) {
+function generateGitVersion(filePath, options = {}) {
     const sha = getShortGitSHA();
     const pkg = readPackageJson(filePath);
 
     if (!pkg.version) {
         throw new Error('The "version" key is missing in package.json.');
     }
+
     const baseVersion = pkg.version.split('-')[0]; // remove any pre-release suffix
-    const newVersion = `${baseVersion}-${sha}`;
+
+    let suffix = sha;
+
+    if (options.includeBranch) {
+        const branch = getGitBranch()
+            .replace(/\//g, '-')   // replace slashes in branch name for safety
+            .replace(/[^\w\-]/g, ''); // remove any unsafe characters
+        suffix = `${branch}.${sha}`;
+    }
+
+    const newVersion = `${baseVersion}-${suffix}`;
 
     return newVersion;
+}
+
+function getGitBranch() {
+    return childProcess.execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 }
 
 module.exports = {
