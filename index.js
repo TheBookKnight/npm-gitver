@@ -6,8 +6,8 @@ function getShortGitSHA() {
     return childProcess.execSync('git rev-parse --short HEAD').toString().trim();
 }
 
-function readPackageJson() {
-    const pkgPath = path.resolve(process.cwd(), 'package.json');
+function readPackageJson(filePath = './package.json') {
+    const pkgPath = path.resolve(process.cwd(), filePath);
     if (!fs.existsSync(pkgPath)) {
         throw new Error('package.json not found in the current working directory.');
     }
@@ -15,9 +15,9 @@ function readPackageJson() {
     return JSON.parse(raw);
 }
 
-function generateGitVersion() {
+function generateGitVersion(filePath) {
     const sha = getShortGitSHA();
-    const pkg = readPackageJson();
+    const pkg = readPackageJson(filePath);
 
     if (!pkg.version) {
         throw new Error('The "version" key is missing in package.json.');

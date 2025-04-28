@@ -46,6 +46,22 @@ npx npm-gitver
 
 This will execute the package directly from the command line, creating or updating the version based on Git tags.
 
+### Specifying a Custom `package.json` File Path
+
+If your `package.json` file is located in a custom directory, you can use the `--file` or `-f` flag to specify its path:
+
+```bash
+npx npm-gitver --file ./path/to/package.json
+```
+
+or
+
+```bash
+npx npm-gitver -f ./path/to/package.json
+```
+
+This will use the specified `package.json` file to determine the base version and update it accordingly.
+
 ## Linting
 
 Follow best practices for linting your code. Refer to the ESLint documentation for setup and configuration:
