@@ -5,7 +5,7 @@ const assert = require('assert');
 const { test } = require('node:test');
 const sinon = require('sinon');
 
-test('should generate a version with Git SHA when package.json is valid', (t) => {
+test('should generate a version with Git SHA when package.json is valid', () => {
     // Mock dependencies
     const execSyncStub = sinon.stub(childProcess, 'execSync').returns('abc123');
     const existsSyncStub = sinon.stub(fs, 'existsSync').returns(true);
@@ -25,7 +25,7 @@ test('should generate a version with Git SHA when package.json is valid', (t) =>
     }
 });
 
-test('should throw an error if package.json is missing', (t) => {
+test('should throw an error if package.json is missing', () => {
     // Mock dependencies
     const existsSyncStub = sinon.stub(fs, 'existsSync').returns(false);
 
@@ -40,7 +40,7 @@ test('should throw an error if package.json is missing', (t) => {
     }
 });
 
-test('should throw an error if version key is missing in package.json', (t) => {
+test('should throw an error if version key is missing in package.json', () => {
     // Mock dependencies
     const existsSyncStub = sinon.stub(fs, 'existsSync').returns(true);
     const readFileSyncStub = sinon.stub(fs, 'readFileSync').returns(JSON.stringify({}));
@@ -57,7 +57,7 @@ test('should throw an error if version key is missing in package.json', (t) => {
     }
 });
 
-test('should throw an error if Git SHA cannot be retrieved', (t) => {
+test('should throw an error if Git SHA cannot be retrieved', () => {
     // Mock dependencies
     const existsSyncStub = sinon.stub(fs, 'existsSync').returns(true);
     const readFileSyncStub = sinon.stub(fs, 'readFileSync').returns(JSON.stringify({ version: '1.0.0' }));

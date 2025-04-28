@@ -4,9 +4,9 @@ const { generateGitVersion } = require('../index');
 const { test } = require('node:test');
 const assert = require('assert');
 
-const TEMP_PACKAGE_PATH = './test/temp-package.json';
+const TEMP_PACKAGE_PATH = './test/package.json';
 
-test('generateGitVersion correctly appends Git SHA to package version', async (t) => {
+test('generateGitVersion correctly appends Git SHA to package version', async () => {
     // Arrange
     const fakePackage = {
         name: "fake-package",

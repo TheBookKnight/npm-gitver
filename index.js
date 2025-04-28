@@ -30,6 +30,7 @@ function generateGitVersion(filePath, options = {}) {
     if (options.includeBranch) {
         const branch = getGitBranch()
             .replace(/\//g, '-')   // replace slashes in branch name for safety
+            // eslint-disable-next-line no-useless-escape
             .replace(/[^\w\-]/g, ''); // remove any unsafe characters
         suffix = `${branch}.${sha}`;
     }
