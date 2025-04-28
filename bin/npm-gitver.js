@@ -14,5 +14,5 @@ for (let i = 0; i < args.length; i++) {
     }
 }
 
-const version = generateGitVersion();
+const version = generateGitVersion(filePath);
 console.log(version);
