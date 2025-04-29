@@ -1,6 +1,6 @@
 # npm-gitver
 
-`npm-gitver` is an NPM library for managing versioning in your Node.js projects using Git tags.
+`npm-gitver` is an NPM library for managing versioning in your Node.js projects using your project's Git SHA.
 
 ## Installation
 
@@ -84,12 +84,90 @@ When using this flag, the generated version will include the branch name as a pr
 
 Note: Slashes (`/`) in branch names will be replaced with dashes (`-`), and any unsafe characters will be removed.
 
-## Linting
+### Outputting the Version in JSON Format
 
-Follow best practices for linting your code. Refer to the ESLint documentation for setup and configuration:
+If you want the version to be output in JSON format, you can use the `--json` flag. This is useful for programmatic consumption of the version information.
 
-[ESLint Documentation](https://eslint.org/docs/latest/)
+```bash
+npx npm-gitver --json
+```
+
+or
+
+```bash
+npx npm-gitver -j
+```
+
+When using this flag, the output will be a JSON object containing the version. For example:
+
+```json
+{
+  "version": "1.0.0-abc123"
+}
+```
+
+This can be combined with other flags, such as `--branch`, to include additional information in the version.
+
+### Using the API Programmatically
+
+You can also use `npm-gitver` programmatically in your Node.js scripts. Here's an example:
+
+```javascript
+const { generateGitVersion } = require("npm-gitver");
+
+const options = {
+  includeBranch: true, // Include the Git branch name in the version
+  outputJson: true, // Output the version in JSON format
+};
+
+const version = generateGitVersion("./path/to/package.json", options);
+
+console.log(version);
+// Example output: {"version":"1.0.0-feature-new-feature.abc123"}
+```
+
+#### Parameters for `generateGitVersion`
+
+- **`filePath`** (string): The path to the `package.json` file. Defaults to `./package.json`.
+- **`options`** (object):
+  - `includeBranch` (boolean): Whether to include the Git branch name in the version. Default is `false`.
+  - `outputJson` (boolean): Whether to output the version in JSON format. Default is `false`.
+
+#### Return Value
+
+- If `outputJson` is `false`, the function returns a string representing the version (e.g., `1.0.0-abc123`).
+- If `outputJson` is `true`, the function returns a JSON string (e.g., `{"version":"1.0.0-abc123"}`).
+
+## Use Cases
+
+Here are some common use cases for `npm-gitver`:
+
+1. **Automated Versioning for CI/CD Pipelines:**
+
+   - Use `npm-gitver` in your CI/CD pipelines to automatically generate unique versions for each build based on Git tags and branch names.
+   - Example: Include the branch name and Git SHA in the version to differentiate builds from `main` and feature branches.
+
+2. **Semantic Versioning with Git Tags:**
+
+   - Ensure your project follows semantic versioning by using Git tags as the source of truth for version numbers.
+   - Example: Tag your releases with `v1.0.0`, and `npm-gitver` will use the tag to generate the version.
+
+3. **Programmatic Version Management:**
+
+   - Use the API to programmatically generate versions in custom scripts or tools.
+   - Example: Generate a JSON-formatted version string for use in a deployment manifest.
+
+4. **Debugging and Build Identification:**
+
+   - Include the Git SHA and branch name in the version to easily identify the source of a build.
+   - Example: A version like `1.0.0-feature-new-feature.abc123` helps trace the build back to a specific commit and branch.
+
+5. **Custom Versioning for Monorepos:**
+   - Specify a custom `package.json` file path for projects in a monorepo setup.
+   - Example: Use the `--file` flag to generate versions for individual packages in a monorepo.
 
 ## Additional Information
 
-For more details on how `npm-gitver` works, refer to the [GitHub repository](https://github.com/your-repo/npm-gitver).
+For more details on how `npm-gitver` works, refer to the [GitHub repository](https://github.com/TheBookKnight/npm-gitver).
+
+If you have questions or issues about this project, you can open an issue

@@ -1,14 +1,31 @@
 {
   "name": "npm-gitver",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "npm gitver is a simple command line tool that allows you to easily manage your git versioning.",
   "bin": {
     "npm-gitver": "./bin/npm-gitver.js"
   },
   "keywords": [
-    "nodejs",
-    "javascript",
-    "git"
+    "npm",
+    "git",
+    "version",
+    "semver",
+    "git version",
+    "git sha",
+    "build version",
+    "ci",
+    "ci/cd",
+    "deployment",
+    "automation",
+    "node",
+    "node.js",
+    "cli",
+    "github actions",
+    "versioning",
+    "package.json",
+    "monorepo",
+    "microservices",
+    "devops"
   ],
   "homepage": "https://github.com/TheBookKnight/npm-gitver#readme",
   "bugs": {
@@ -30,5 +47,8 @@
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
     "sinon": "^20.0.0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8"
   }
 }
