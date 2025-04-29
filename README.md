@@ -138,6 +138,34 @@ console.log(version);
 - If `outputJson` is `false`, the function returns a string representing the version (e.g., `1.0.0-abc123`).
 - If `outputJson` is `true`, the function returns a JSON string (e.g., `{"version":"1.0.0-abc123"}`).
 
+## Use Cases
+
+Here are some common use cases for `npm-gitver`:
+
+1. **Automated Versioning for CI/CD Pipelines:**
+
+   - Use `npm-gitver` in your CI/CD pipelines to automatically generate unique versions for each build based on Git tags and branch names.
+   - Example: Include the branch name and Git SHA in the version to differentiate builds from `main` and feature branches.
+
+2. **Semantic Versioning with Git Tags:**
+
+   - Ensure your project follows semantic versioning by using Git tags as the source of truth for version numbers.
+   - Example: Tag your releases with `v1.0.0`, and `npm-gitver` will use the tag to generate the version.
+
+3. **Programmatic Version Management:**
+
+   - Use the API to programmatically generate versions in custom scripts or tools.
+   - Example: Generate a JSON-formatted version string for use in a deployment manifest.
+
+4. **Debugging and Build Identification:**
+
+   - Include the Git SHA and branch name in the version to easily identify the source of a build.
+   - Example: A version like `1.0.0-feature-new-feature.abc123` helps trace the build back to a specific commit and branch.
+
+5. **Custom Versioning for Monorepos:**
+   - Specify a custom `package.json` file path for projects in a monorepo setup.
+   - Example: Use the `--file` flag to generate versions for individual packages in a monorepo.
+
 ## Additional Information
 
 For more details on how `npm-gitver` works, refer to the [GitHub repository](https://github.com/TheBookKnight/npm-gitver).
