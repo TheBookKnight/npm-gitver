@@ -37,7 +37,11 @@ function generateGitVersion(filePath, options = {}) {
 
     const newVersion = `${baseVersion}-${suffix}`;
 
-    return newVersion;
+    if (options.outputJson) {
+        return JSON.stringify({ 'version': newVersion })
+    } else {
+        return newVersion;
+    }
 }
 
 function getGitBranch() {
